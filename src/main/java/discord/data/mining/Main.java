@@ -1,6 +1,5 @@
 package discord.data.mining;
 
-import discord.data.mining.Listener.eventListener;
 import discord.data.mining.Listener.managerListener;
 import discord.data.mining.Listener.onready;
 import net.dv8tion.jda.core.AccountType;
