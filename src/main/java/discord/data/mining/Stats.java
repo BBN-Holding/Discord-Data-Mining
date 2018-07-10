@@ -20,7 +20,7 @@ import java.util.*;
 
 public class Stats {
 
-    public static void main() {
+    public static void start() {
 
         Thread diagramm = new Thread(() -> {
             TimerTask timerTask = new TimerTask() {
@@ -72,9 +72,9 @@ public class Stats {
                                 data.add(Integer.parseInt(dataa));
                             }
                             int max = -Integer.MAX_VALUE;
-                            for(int i = 0; i < data.size(); i++) {
-                                if(data.get(i) > max)
-                                    max = data.get(i);
+                            for (Integer aData : data) {
+                                if (aData > max)
+                                    max = aData;
                             }
                             BufferedImage bufferedImage = ImageIO.read(new File("Diagramm.jpg"));
                             Graphics2D g2 = bufferedImage.createGraphics();
@@ -82,16 +82,12 @@ public class Stats {
                                     RenderingHints.VALUE_ANTIALIAS_ON);
                             int w = bufferedImage.getWidth();
                             int h = bufferedImage.getHeight();
-                            // Draw ordinate.
                             g2.draw(new Line2D.Double(24, 24, 24, h - 24));
-                            // Draw abcissa.
                             g2.draw(new Line2D.Double(24, h - 24, w - 24, h - 24));
-                            // Draw labels.
                             Font font = g2.getFont();
                             FontRenderContext frc = g2.getFontRenderContext();
                             LineMetrics lm = font.getLineMetrics("0", frc);
                             float sh = lm.getAscent() + lm.getDescent();
-                            // Ordinate label.
                             String s = "data";
                             float sy = 24 + ((h - 2 * 24) - s.length() * sh) / 2 + lm.getAscent();
                             for (int i = 0; i < s.length(); i++) {
@@ -101,7 +97,6 @@ public class Stats {
                                 g2.drawString(letter, sx, sy);
                                 sy += sh;
                             }
-                            // Abcissa label.
                             s = "x axis";
                             sy = h - 24 + (24 - sh) / 2 + lm.getAscent();
                             float sw = (float) font.getStringBounds(s, frc).getWidth();

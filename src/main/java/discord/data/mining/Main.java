@@ -41,7 +41,7 @@ public class Main {
             for (String Token : botTokens) {
                 bots.add(new JDABuilder(AccountType.BOT).setAutoReconnect(true).setToken(Token).buildAsync());
             }
-            Stats.main();
+            Stats.start();
         } catch (Exception e) {
             e.printStackTrace();
         }
