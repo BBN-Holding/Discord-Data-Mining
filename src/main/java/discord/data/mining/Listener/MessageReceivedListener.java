@@ -10,10 +10,10 @@ import net.dv8tion.jda.core.hooks.ListenerAdapter;
  * @time 09:42 01.07.2018
  * @project Discord-Data-Mining
  * @package discord.data.mining.Listener
- * @class managerListener
+ * @class MessageReceivedListener
  **/
 
-public class managerListener extends ListenerAdapter {
+public class MessageReceivedListener extends ListenerAdapter {
 
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {

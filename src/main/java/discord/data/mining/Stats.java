@@ -15,10 +15,10 @@ import java.util.*;
  * @time 12:52 30.06.2018
  * @project Discord-Data-Mining
  * @package discord.data.mining
- * @class test2
+ * @class Stats
  **/
 
-public class test2 {
+public class Stats {
 
     public static void main() {
 

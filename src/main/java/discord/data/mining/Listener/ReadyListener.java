@@ -12,10 +12,10 @@ import net.dv8tion.jda.core.hooks.ListenerAdapter;
  * @time 12:04 30.06.2018
  * @project Discord-Data-Mining
  * @package discord.data.mining.Listener
- * @class onready
+ * @class ReadyListener
  **/
 
-public class onready extends ListenerAdapter {
+public class ReadyListener extends ListenerAdapter {
 
     @Override
     public void onReady(ReadyEvent event) {
@@ -35,7 +35,7 @@ public class onready extends ListenerAdapter {
         if (Main.onlineclients.size() == 3) {
             Logger.info("All clients loaded");
             for (JDA jda : Main.clients) {
-                jda.addEventListener(new eventListener());
+                jda.addEventListener(new GenericEventListener());
             }
         }
     }

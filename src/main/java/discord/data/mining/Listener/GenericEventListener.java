@@ -13,7 +13,7 @@ import net.dv8tion.jda.core.hooks.ListenerAdapter;
  * @class onReactionAdd
  **/
 
-public class eventListener extends ListenerAdapter {
+public class GenericEventListener extends ListenerAdapter {
 
     @Override
     public void onGenericEvent(Event event) {
