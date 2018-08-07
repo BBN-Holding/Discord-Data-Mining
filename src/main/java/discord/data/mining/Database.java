@@ -8,7 +8,7 @@ import static com.rethinkdb.RethinkDB.r;
  * @author Hax
  * @github github.com/Schlauer-Hax
  * @time 19:40 07.08.2018
- * @project Cryptix-Data-Mining
+ * @project Discord-Data-Mining
  * @package discord.data.mining
  * @class Database
  **/
