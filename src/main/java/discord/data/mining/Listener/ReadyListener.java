@@ -32,7 +32,7 @@ public class ReadyListener extends ListenerAdapter {
                 }
             }
         }
-        if (Main.onlineclients.size() == 3) {
+        if (Main.onlineclients.size() == Main.clients.size()) {
             Logger.info("All clients loaded");
             for (JDA jda : Main.clients) {
                 jda.addEventListener(new GenericEventListener());
