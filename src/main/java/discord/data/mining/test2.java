@@ -44,12 +44,12 @@ public class test2 {
                             String[] stats = stringBuilder.toString().split(" ");
                             String statsstring = stringBuilder.toString();
                             statsstring = statsstring.replaceFirst(stats[0]+" ", "");
-                            statsstring = statsstring+" "+Main.Messageperh;
+                            statsstring = statsstring+" "+Main.Actionperh;
                             FileWriter fw = new FileWriter("stats.txt");
                             BufferedWriter bw = new BufferedWriter(fw);
                             bw.write(statsstring);
                             bw.close();
-                            Main.Messageperh =0;
+                            Main.Actionperh =0;
 
                         } catch (Exception e) {
                             e.printStackTrace();
