@@ -3,7 +3,7 @@ package discord.data.mining;
 /**
  * @author Hax
  * @time 12:01 30.06.2018
- * @project Discord-Data-Mining
+ * @project Cryptix-Data-Mining
  * @package discord.data.mining
  * @class onlinethread
  **/
