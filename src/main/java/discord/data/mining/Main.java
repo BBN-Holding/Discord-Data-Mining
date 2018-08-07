@@ -42,7 +42,7 @@ public class Main {
             for (String Token : botTokens) {
                 bots.add(new JDABuilder(AccountType.BOT).setAutoReconnect(true).setToken(Token).buildAsync());
             }
-            test2.main();
+            Stats.start();
         } catch (Exception e) {
             e.printStackTrace();
         }
