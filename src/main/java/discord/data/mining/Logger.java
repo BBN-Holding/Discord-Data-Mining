@@ -7,7 +7,7 @@ import java.time.Instant;
 /**
  * @author GregTCLTK
  * @time 21:26 30.06.2018
- * @project Discord-Data-Mining
+ * @project Cryptix-Data-Mining
  * @package discord.data.mining
  * @class Logger
  **/
