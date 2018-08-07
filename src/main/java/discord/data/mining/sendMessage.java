@@ -11,6 +11,7 @@ package discord.data.mining;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.events.Event;
+import net.dv8tion.jda.core.events.message.MessageDeleteEvent;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.events.message.react.MessageReactionAddEvent;
 import net.dv8tion.jda.core.events.message.react.MessageReactionRemoveEvent;
@@ -32,6 +33,24 @@ public class sendMessage {
                                         .setAuthor(event.getAuthor().getName(), "https://discordapp.com/channels/@me/" + event.getAuthor().getId() + "/", event.getAuthor().getAvatarUrl()).setColor(65280)
                                         .setTitle("New Message", "https://canary.discordapp.com/channels/" + event.getGuild().getId() + "/")
                                         .setDescription("**Message Content:**\n" + event.getMessage().getContentRaw())
+                                        .setThumbnail(event.getGuild().getIconUrl())
+                                        .addField("Guild Name", event.getGuild().getName(), true)
+                                        .addField("Guild ID", event.getGuild().getId(), true)
+                                        .addField("Guild Owner", event.getGuild().getOwner().getUser().getName() + "#" + event.getGuild().getOwner().getUser().getDiscriminator(), true)
+                                        .addField("Channel Name", "#" + event.getChannel().getName(), true)
+                                        .setFooter(event.getJDA().getSelfUser().getName(), event.getJDA().getSelfUser().getAvatarUrl())
+                                        .setTimestamp(Instant.now())
+                                        .build()
+                        ).queue();
+            }
+        } else if (inputevent instanceof MessageDeleteEvent) {
+            MessageDeleteEvent event = (MessageDeleteEvent) inputevent;
+            if (!event.getGuild().getId().equals("448554629282922527")) {
+                BOT.getTextChannelById(Main.MessageLog)
+                        .sendMessage(
+                                new EmbedBuilder()
+                                        .setColor(16711680)
+                                        .setTitle("Message deleted", "https://canary.discordapp.com/channels/" + event.getGuild().getId() + "/")
                                         .setThumbnail(event.getGuild().getIconUrl())
                                         .addField("Guild Name", event.getGuild().getName(), true)
                                         .addField("Guild ID", event.getGuild().getId(), true)

@@ -23,7 +23,7 @@ public class Main {
     public static ArrayList<JDA> manager = new ArrayList<>();
     public static int currentBot = 0;
     public static ArrayList<String> onlineclients = new ArrayList<>();
-    public static long Messageperh = 0;
+    public static long Actionperh = 0;
     public static ArrayList<Guild> guilds = new ArrayList<>();
 
     public static void main(String[] args) {

@@ -17,7 +17,7 @@ public class GenericEventListener extends ListenerAdapter {
 
     @Override
     public void onGenericEvent(Event event) {
-            Main.Messageperh++;
+            Main.Actionperh++;
             sendMessage.sendMessage(event);
     }
 }
