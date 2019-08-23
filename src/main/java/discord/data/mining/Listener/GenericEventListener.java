@@ -2,8 +2,8 @@ package discord.data.mining.Listener;
 
 import discord.data.mining.Main;
 import discord.data.mining.sendMessage;
-import net.dv8tion.jda.core.events.Event;
-import net.dv8tion.jda.core.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.events.Event;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 /**
  * @author GregTCLTK
@@ -15,7 +15,6 @@ import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
 public class GenericEventListener extends ListenerAdapter {
 
-    @Override
     public void onGenericEvent(Event event) {
             Main.Actionperh++;
             sendMessage.sendMessage(event);

@@ -1,6 +1,6 @@
 package discord.data.mining;
 
-import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.api.EmbedBuilder;
 
 import java.text.SimpleDateFormat;
 import java.time.Instant;
