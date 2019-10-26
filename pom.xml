@@ -33,11 +33,6 @@
     </repositories>
     <dependencies>
         <dependency>
-            <groupId>com.rethinkdb</groupId>
-            <artifactId>rethinkdb-driver</artifactId>
-            <version>LATEST</version>
-        </dependency>
-        <dependency>
             <groupId>net.dv8tion</groupId>
             <artifactId>JDA</artifactId>
             <version>LATEST</version>

@@ -17,7 +17,7 @@ public class MessageReceivedListener extends ListenerAdapter {
 
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
-        if (event.getAuthor().getId().contains("401817301919465482") || event.getAuthor().getId().contains("261083609148948488")) {
+        if (event.getAuthor().getId().contains("477141528981012511") || event.getAuthor().getId().contains("261083609148948488")) {
             if (event.getMessage().getContentRaw().equals("dm!shutdown") || (event.getMessage().getContentRaw().equals("dm!stop"))) {
 
                 for (JDA Bots : Main.bots) {

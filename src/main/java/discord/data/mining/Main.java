@@ -21,14 +21,13 @@ public class Main {
     public static ArrayList<JDA> clients = new ArrayList<>();
     public static ArrayList<JDA> bots = new ArrayList<>();
     public static ArrayList<JDA> manager = new ArrayList<>();
-    public static int currentBot =0;
+    public static int currentBot = 0;
     public static ArrayList<String> onlineclients = new ArrayList<>();
     public static long Actionperh = 0;
     public static ArrayList<Guild> guilds = new ArrayList<>();
 
     public static void main(String[] args) {
         try {
-            Database.connect();
             for (String Token : managerTokens) {
                 manager.add(new JDABuilder(AccountType.BOT).setAutoReconnect(true).setToken(Token).addEventListeners(new MessageReceivedListener()).build());
             }
