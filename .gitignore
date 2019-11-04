@@ -26,3 +26,5 @@ hs_err_pid*
 SECRETS.java
 SECRETSsss.java
 Discord-Data-Mining.iml
+
+target/classes/META-INF/
