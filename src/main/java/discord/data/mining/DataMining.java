@@ -4,7 +4,6 @@ import discord.data.mining.listener.ReadyListener;
 import net.dv8tion.jda.api.AccountType;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
-import net.dv8tion.jda.api.entities.Guild;
 
 import java.util.ArrayList;
 
