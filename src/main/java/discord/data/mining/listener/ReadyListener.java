@@ -15,6 +15,7 @@ public class ReadyListener extends ListenerAdapter {
                 .setThumbnail(event.getJDA().getSelfUser().getAvatarUrl())
                 .setColor(Color.GREEN)
                 .setTimestamp(Instant.now())
+                .setAuthor(event.getJDA().getSelfUser().getName(), event.getJDA().getSelfUser().getAvatarUrl(), event.getJDA().getSelfUser().getAvatarUrl())
                 .addField("As Mention", event.getJDA().getSelfUser().getAsTag(), true)
                 .addField("ID", event.getJDA().getSelfUser().getId(), true)
                 .addField("Guilds", String.valueOf(event.getJDA().getGuilds().size()), true)

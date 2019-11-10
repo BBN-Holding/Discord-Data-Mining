@@ -10,7 +10,6 @@ public class DataLog {
 
     public static void log(Event event) {
         JDA BOT = DataMining.bots.get(DataMining.bot);
-
         if (event instanceof MessageReceivedEvent) {
             MessageReceivedEvent msgevent = (MessageReceivedEvent) event;
             BOT.getTextChannelById(DataMining.MessageLog).sendMessage(new EmbedBuilder()
