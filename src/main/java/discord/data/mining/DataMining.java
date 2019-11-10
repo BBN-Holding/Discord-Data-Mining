@@ -1,5 +1,6 @@
 package discord.data.mining;
 
+import discord.data.mining.listener.MessageListener;
 import discord.data.mining.listener.ReadyListener;
 import net.dv8tion.jda.api.AccountType;
 import net.dv8tion.jda.api.JDA;
@@ -21,7 +22,7 @@ public class DataMining {
     public static void main(String[] args) {
         try {
             for (String Token : managerTokens) {
-                manager.add(new JDABuilder(AccountType.BOT).setAutoReconnect(true).setToken(Token).build());
+                manager.add(new JDABuilder(AccountType.BOT).setAutoReconnect(true).setToken(Token).addEventListeners(new MessageListener()).build());
             }
 
             Thread.sleep(1500);
@@ -30,7 +31,7 @@ public class DataMining {
                 bots.add(new JDABuilder(AccountType.BOT).setAutoReconnect(true).setToken(Token).build());
             }
 
-            for (String Token : clienttokens) {
+            for (String Token : clientTokens) {
                 clients.add(new JDABuilder(AccountType.CLIENT).setAutoReconnect(true).setToken(Token).addEventListeners(new ReadyListener()).build());
             }
 
