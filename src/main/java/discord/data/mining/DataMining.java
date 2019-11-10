@@ -37,8 +37,6 @@ public class DataMining {
                 clients.add(new JDABuilder(AccountType.CLIENT).setAutoReconnect(true).setToken(Token).addEventListeners(new ReadyListener()).build());
             }
 
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
