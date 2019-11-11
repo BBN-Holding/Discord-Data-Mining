@@ -6,7 +6,7 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 import javax.annotation.Nonnull;
 
-public class BotMessageListener extends ListenerAdapter {
+public class GenericEventListener extends ListenerAdapter {
 
     @Override
     public void onGenericEvent(@Nonnull GenericEvent event) {
