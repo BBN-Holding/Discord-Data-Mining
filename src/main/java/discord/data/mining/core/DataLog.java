@@ -3,7 +3,6 @@ package discord.data.mining.core;
 import discord.data.mining.DataMining;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
-import net.dv8tion.jda.api.events.Event;
 import net.dv8tion.jda.api.events.GenericEvent;
 import net.dv8tion.jda.api.events.message.MessageDeleteEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -16,6 +15,8 @@ public class DataLog {
 
     public static void log(GenericEvent event) {
         JDA BOT = DataMining.bots.get(DataMining.bot);
+        DataMining.bot++;
+        if (DataMining.bot == DataMining.bots.size()) DataMining.bot = 0;
         if (event instanceof MessageReceivedEvent) {
             MessageReceivedEvent msgevent = (MessageReceivedEvent) event;
             if (!msgevent.getGuild().getId().equals("448554629282922527")) {
