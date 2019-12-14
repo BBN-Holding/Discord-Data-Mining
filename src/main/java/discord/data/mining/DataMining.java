@@ -6,6 +6,7 @@ import discord.data.mining.listener.ReadyListener;
 import net.dv8tion.jda.api.AccountType;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.utils.ChunkingFilter;
 
 import java.util.ArrayList;
 
@@ -30,11 +31,11 @@ public class DataMining {
             Thread.sleep(1500);
 
             for (String Token : botTokens) {
-                bots.add(new JDABuilder(AccountType.BOT).setAutoReconnect(true).setToken(Token).addEventListeners(new GenericEventListener()).build());
+                bots.add(new JDABuilder(AccountType.BOT).setAutoReconnect(true).setToken(Token).build());
             }
 
             for (String Token : clientTokens) {
-                clients.add(new JDABuilder(AccountType.CLIENT).setAutoReconnect(true).setToken(Token).addEventListeners(new ReadyListener()).build());
+                clients.add(new JDABuilder(AccountType.CLIENT).setToken(Token).setAutoReconnect(true).setChunkingFilter(ChunkingFilter.NONE).addEventListeners(new ReadyListener(), new GenericEventListener()).build());
             }
 
         } catch (Exception e) {
