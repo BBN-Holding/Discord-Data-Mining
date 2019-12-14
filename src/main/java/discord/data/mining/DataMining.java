@@ -16,6 +16,7 @@ public class DataMining {
 
     public static String MessageLog = "462507170383134720";
     public static String ReactionLog = "462524422713245696";
+    public static String UserLog = "655416028620128262";
     public static String ConsoleLog = "462556910206320640";
     public static ArrayList<JDA> clients = new ArrayList<>();
     public static ArrayList<JDA> bots = new ArrayList<>();
