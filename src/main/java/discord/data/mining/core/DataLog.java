@@ -4,6 +4,8 @@ import discord.data.mining.DataMining;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.events.GenericEvent;
+import net.dv8tion.jda.api.events.channel.store.StoreChannelCreateEvent;
+import net.dv8tion.jda.api.events.channel.store.StoreChannelDeleteEvent;
 import net.dv8tion.jda.api.events.message.MessageDeleteEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.events.message.react.MessageReactionAddEvent;
@@ -154,6 +156,30 @@ public class DataLog {
                     .setAuthor(uevent.getUser().getAsTag(), uevent.getUser().getAvatarUrl(), uevent.getUser().getAvatarUrl())
                     .setTitle("User ended playing")
                     .addField("Old activity", uevent.getOldActivity().toString(), true)
+                    .setFooter("BBN Data Mining", "https://bigbotnetwork.com/images/avatar.png")
+                    .build()).queue();
+        } else if (event instanceof StoreChannelCreateEvent) {
+            StoreChannelCreateEvent cevent = (StoreChannelCreateEvent) event;
+            BOT.getTextChannelById(DataMining.ChannelLog).sendMessage(new EmbedBuilder()
+                    .setColor(Color.GREEN)
+                    .setTimestamp(Instant.now())
+                    .setThumbnail(cevent.getChannel().getGuild().getIconUrl())
+                    .setAuthor(cevent.getChannel().getGuild().getName(), cevent.getChannel().getGuild().getIconUrl(), cevent.getChannel().getGuild().getIconUrl())
+                    .setTitle("Store channel created")
+                    .addField("Channel name", cevent.getChannel().getName(), true)
+                    .addField("Channel ID", cevent.getChannel().getId(), true)
+                    .setFooter("BBN Data Mining", "https://bigbotnetwork.com/images/avatar.png")
+                    .build()).queue();
+        } else if (event instanceof StoreChannelDeleteEvent) {
+            StoreChannelDeleteEvent cevent = (StoreChannelDeleteEvent) event;
+            BOT.getTextChannelById(DataMining.ChannelLog).sendMessage(new EmbedBuilder()
+                    .setColor(Color.GREEN)
+                    .setTimestamp(Instant.now())
+                    .setThumbnail(cevent.getChannel().getGuild().getIconUrl())
+                    .setAuthor(cevent.getChannel().getGuild().getName(), cevent.getChannel().getGuild().getIconUrl(), cevent.getChannel().getGuild().getIconUrl())
+                    .setTitle("Store channel deleted")
+                    .addField("Channel name", cevent.getChannel().getName(), true)
+                    .addField("Channel ID", cevent.getChannel().getId(), true)
                     .setFooter("BBN Data Mining", "https://bigbotnetwork.com/images/avatar.png")
                     .build()).queue();
         }
