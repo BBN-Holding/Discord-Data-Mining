@@ -33,6 +33,15 @@ public class DataMining {
 
             Thread.sleep(1500);
 
+            startMining();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void startMining() {
+        try {
             for (String Token : botTokens) {
                 bots.add(new JDABuilder(AccountType.BOT).setAutoReconnect(true).setToken(Token).build());
             }

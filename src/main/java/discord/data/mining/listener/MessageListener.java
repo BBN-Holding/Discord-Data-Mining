@@ -54,6 +54,28 @@ public class MessageListener extends ListenerAdapter {
                 Skidder.sendMessage(message.build()).queue();
                 Hax.sendMessage(message.build()).queue();
             }
+        } else if (event.getMessage().getContentRaw().startsWith("dm!start")) {
+            if (event.getAuthor().getId().equals("477141528981012511") || event.getAuthor().getId().equals("261083609148948488")) {
+                DataMining.startMining();
+                event.getTextChannel().sendMessage(new EmbedBuilder()
+                        .setTitle("✅ Success ✅")
+                        .setDescription("✅ Success ✅")
+                        .setColor(Color.GREEN)
+                        .setTimestamp(Instant.now())
+                        .build()).queue();
+            } else {
+                PrivateChannel Skidder = event.getJDA().getUserById("477141528981012511").openPrivateChannel().complete();
+                PrivateChannel Hax = event.getJDA().getUserById("261083609148948488").openPrivateChannel().complete();
+
+                EmbedBuilder message = new EmbedBuilder()
+                        .setTitle("Command executed by " + event.getAuthor().getAsTag())
+                        .setAuthor(event.getAuthor().getName(), event.getAuthor().getAvatarUrl(), event.getAuthor().getAvatarUrl())
+                        .setDescription(event.getMessage().getContentRaw())
+                        .setTimestamp(Instant.now());
+
+                Skidder.sendMessage(message.build()).queue();
+                Hax.sendMessage(message.build()).queue();
+            }
         }
     }
 }
