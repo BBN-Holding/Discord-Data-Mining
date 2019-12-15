@@ -497,6 +497,104 @@ public class DataLog {
                     .addField("Guild ID", gevent.getGuild().getId(), true)
                     .addField("Guild owner", gevent.getGuild().getOwner().getUser().getAsTag(), true)
                     .build()).queue();
+        } else if (event instanceof GuildUpdateNotificationLevelEvent) {
+            GuildUpdateNotificationLevelEvent gevent = (GuildUpdateNotificationLevelEvent) event;
+            BOT.getTextChannelById(DataMining.GuildLog).sendMessage(new EmbedBuilder()
+                    .setColor(Color.GREEN)
+                    .setTimestamp(Instant.now())
+                    .setThumbnail(gevent.getGuild().getIconUrl())
+                    .setAuthor(gevent.getGuild().getName(), gevent.getGuild().getIconUrl(), gevent.getGuild().getIconUrl())
+                    .setTitle("Notification level updated")
+                    .addField("Guild name", gevent.getGuild().getName(), true)
+                    .addField("Guild ID", gevent.getGuild().getId(), true)
+                    .addField("Guild owner", gevent.getGuild().getOwner().getUser().getAsTag(), true)
+                    .addField("Old level", String.valueOf(gevent.getOldNotificationLevel()), true)
+                    .addField("New level", String.valueOf(gevent.getNewNotificationLevel()), true)
+                    .build()).queue();
+        } else if (event instanceof GuildUpdateOwnerEvent) {
+            GuildUpdateOwnerEvent gevent = (GuildUpdateOwnerEvent) event;
+            BOT.getTextChannelById(DataMining.GuildLog).sendMessage(new EmbedBuilder()
+                    .setColor(Color.GREEN)
+                    .setTimestamp(Instant.now())
+                    .setThumbnail(gevent.getGuild().getIconUrl())
+                    .setAuthor(gevent.getGuild().getName(), gevent.getGuild().getIconUrl(), gevent.getGuild().getIconUrl())
+                    .setTitle("Owner updated")
+                    .addField("Guild name", gevent.getGuild().getName(), true)
+                    .addField("Guild ID", gevent.getGuild().getId(), true)
+                    .addField("Old owner", gevent.getOldOwner().getUser().getAsTag(), true)
+                    .addField("New owner", gevent.getNewOwner().getUser().getAsTag(), true)
+                    .build()).queue();
+        } else if (event instanceof GuildUpdateRegionEvent) {
+            GuildUpdateRegionEvent gevent = (GuildUpdateRegionEvent) event;
+            BOT.getTextChannelById(DataMining.GuildLog).sendMessage(new EmbedBuilder()
+                    .setColor(Color.GREEN)
+                    .setTimestamp(Instant.now())
+                    .setThumbnail(gevent.getGuild().getIconUrl())
+                    .setAuthor(gevent.getGuild().getName(), gevent.getGuild().getIconUrl(), gevent.getGuild().getIconUrl())
+                    .setTitle("Region updated")
+                    .addField("Guild name", gevent.getGuild().getName(), true)
+                    .addField("Guild ID", gevent.getGuild().getId(), true)
+                    .addField("Guild owner", gevent.getGuild().getOwner().getUser().getAsTag(), true)
+                    .addField("Old region", String.valueOf(gevent.getOldRegion()), true)
+                    .addField("New region", String.valueOf(gevent.getNewRegion()), true)
+                    .build()).queue();
+        } else if (event instanceof GuildUpdateSplashEvent) {
+            GuildUpdateSplashEvent gevent = (GuildUpdateSplashEvent) event;
+            BOT.getTextChannelById(DataMining.GuildLog).sendMessage(new EmbedBuilder()
+                    .setColor(Color.GREEN)
+                    .setTimestamp(Instant.now())
+                    .setThumbnail(gevent.getOldSplashUrl())
+                    .setImage(gevent.getNewSplashUrl())
+                    .setAuthor(gevent.getGuild().getName(), gevent.getGuild().getIconUrl(), gevent.getGuild().getIconUrl())
+                    .setTitle("Splash updated")
+                    .addField("Guild name", gevent.getGuild().getName(), true)
+                    .addField("Guild ID", gevent.getGuild().getId(), true)
+                    .addField("Guild owner", gevent.getGuild().getOwner().getUser().getAsTag(), true)
+                    .addField("Old ID", gevent.getOldSplashId(), true)
+                    .addField("New ID", gevent.getNewSplashId(), true)
+                    .build()).queue();
+        } else if (event instanceof  GuildUpdateVerificationLevelEvent) {
+            GuildUpdateVerificationLevelEvent gevent = (GuildUpdateVerificationLevelEvent) event;
+            BOT.getTextChannelById(DataMining.GuildLog).sendMessage(new EmbedBuilder()
+                    .setColor(Color.GREEN)
+                    .setTimestamp(Instant.now())
+                    .setThumbnail(gevent.getGuild().getIconUrl())
+                    .setAuthor(gevent.getGuild().getName(), gevent.getGuild().getIconUrl(), gevent.getGuild().getIconUrl())
+                    .setTitle("Verification level updated")
+                    .addField("Guild name", gevent.getGuild().getName(), true)
+                    .addField("Guild ID", gevent.getGuild().getId(), true)
+                    .addField("Guild owner", gevent.getGuild().getOwner().getUser().getAsTag(), true)
+                    .addField("Old level", String.valueOf(gevent.getOldVerificationLevel()), true)
+                    .addField("New level", String.valueOf(gevent.getNewVerificationLevel()), true)
+                    .build()).queue();
+        } else if (event instanceof GuildUpdateFeaturesEvent){
+            GuildUpdateFeaturesEvent gevent = (GuildUpdateFeaturesEvent) event;
+            BOT.getTextChannelById(DataMining.GuildLog).sendMessage(new EmbedBuilder()
+                    .setColor(Color.GREEN)
+                    .setTimestamp(Instant.now())
+                    .setThumbnail(gevent.getGuild().getIconUrl())
+                    .setAuthor(gevent.getGuild().getName(), gevent.getGuild().getIconUrl(), gevent.getGuild().getIconUrl())
+                    .setTitle("Features updated")
+                    .addField("Guild name", gevent.getGuild().getName(), true)
+                    .addField("Guild ID", gevent.getGuild().getId(), true)
+                    .addField("Guild owner", gevent.getGuild().getOwner().getUser().getAsTag(), true)
+                    .addField("Old features", String.valueOf(gevent.getOldFeatures()), true)
+                    .addField("New features", String.valueOf(gevent.getNewFeatures()), true)
+                    .build()).queue();
+        } else if (event instanceof GuildUpdateVanityCodeEvent){
+            GuildUpdateVanityCodeEvent gevent = (GuildUpdateVanityCodeEvent) event;
+            BOT.getTextChannelById(DataMining.GuildLog).sendMessage(new EmbedBuilder()
+                    .setColor(Color.GREEN)
+                    .setTimestamp(Instant.now())
+                    .setThumbnail(gevent.getGuild().getIconUrl())
+                    .setAuthor(gevent.getGuild().getName(), gevent.getGuild().getIconUrl(), gevent.getGuild().getIconUrl())
+                    .setTitle("Vanity code updated")
+                    .addField("Guild name", gevent.getGuild().getName(), true)
+                    .addField("Guild ID", gevent.getGuild().getId(), true)
+                    .addField("Guild owner", gevent.getGuild().getOwner().getUser().getAsTag(), true)
+                    .addField("Old URL", gevent.getOldVanityUrl(), true)
+                    .addField("New URL", gevent.getNewVanityUrl(), true)
+                    .build()).queue();
         }
     }
 }
