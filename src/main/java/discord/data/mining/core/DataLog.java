@@ -595,6 +595,91 @@ public class DataLog {
                     .addField("Old URL", gevent.getOldVanityUrl(), true)
                     .addField("New URL", gevent.getNewVanityUrl(), true)
                     .build()).queue();
+        } else if (event instanceof GuildUpdateBannerEvent){
+            GuildUpdateBannerEvent gevent = (GuildUpdateBannerEvent) event;
+            BOT.getTextChannelById(DataMining.GuildLog).sendMessage(new EmbedBuilder()
+                    .setColor(Color.GREEN)
+                    .setTimestamp(Instant.now())
+                    .setThumbnail(gevent.getOldBannerUrl())
+                    .setImage(gevent.getNewBannerIdUrl())
+                    .setAuthor(gevent.getGuild().getName(), gevent.getGuild().getIconUrl(), gevent.getGuild().getIconUrl())
+                    .setTitle("Banner updated")
+                    .addField("Guild name", gevent.getGuild().getName(), true)
+                    .addField("Guild ID", gevent.getGuild().getId(), true)
+                    .addField("Guild owner", gevent.getGuild().getOwner().getUser().getAsTag(), true)
+                    .addField("Old ID", gevent.getOldBannerId(), true)
+                    .addField("New ID", gevent.getNewBannerId(), true)
+                    .build()).queue();
+        } else if (event instanceof GuildUpdateDescriptionEvent){
+            GuildUpdateDescriptionEvent gevent = (GuildUpdateDescriptionEvent) event;
+            BOT.getTextChannelById(DataMining.GuildLog).sendMessage(new EmbedBuilder()
+                    .setColor(Color.GREEN)
+                    .setTimestamp(Instant.now())
+                    .setThumbnail(gevent.getGuild().getIconUrl())
+                    .setAuthor(gevent.getGuild().getName(), gevent.getGuild().getIconUrl(), gevent.getGuild().getIconUrl())
+                    .setTitle("Description updated")
+                    .addField("Guild name", gevent.getGuild().getName(), true)
+                    .addField("Guild ID", gevent.getGuild().getId(), true)
+                    .addField("Guild owner", gevent.getGuild().getOwner().getUser().getAsTag(), true)
+                    .addField("Old description", gevent.getOldDescription(), true)
+                    .addField("New description", gevent.getNewDescription(), true)
+                    .build()).queue();
+        } else if (event instanceof GuildUpdateBoostTierEvent){
+            GuildUpdateBoostTierEvent gevent = (GuildUpdateBoostTierEvent) event;
+            BOT.getTextChannelById(DataMining.GuildLog).sendMessage(new EmbedBuilder()
+                    .setColor(Color.GREEN)
+                    .setTimestamp(Instant.now())
+                    .setThumbnail(gevent.getGuild().getIconUrl())
+                    .setAuthor(gevent.getGuild().getName(), gevent.getGuild().getIconUrl(), gevent.getGuild().getIconUrl())
+                    .setTitle("Boost tier changed")
+                    .addField("Guild name", gevent.getGuild().getName(), true)
+                    .addField("Guild ID", gevent.getGuild().getId(), true)
+                    .addField("Guild owner", gevent.getGuild().getOwner().getUser().getAsTag(), true)
+                    .addField("Old tier", String.valueOf(gevent.getOldBoostTier()), true)
+                    .addField("New tier", String.valueOf(gevent.getNewBoostTier()), true)
+                    .build()).queue();
+        } else if (event instanceof GuildUpdateBoostCountEvent){
+            GuildUpdateBoostCountEvent gevent = (GuildUpdateBoostCountEvent) event;
+            BOT.getTextChannelById(DataMining.GuildLog).sendMessage(new EmbedBuilder()
+                    .setColor(Color.GREEN)
+                    .setTimestamp(Instant.now())
+                    .setThumbnail(gevent.getGuild().getIconUrl())
+                    .setAuthor(gevent.getGuild().getName(), gevent.getGuild().getIconUrl(), gevent.getGuild().getIconUrl())
+                    .setTitle("Boost added")
+                    .addField("Guild name", gevent.getGuild().getName(), true)
+                    .addField("Guild ID", gevent.getGuild().getId(), true)
+                    .addField("Guild owner", gevent.getGuild().getOwner().getUser().getAsTag(), true)
+                    .addField("Old boost count", String.valueOf(gevent.getOldBoostCount()), true)
+                    .addField("New boost count", String.valueOf(gevent.getNewBoostCount()), true)
+                    .build()).queue();
+        } else if (event instanceof GuildUpdateMaxMembersEvent){
+            GuildUpdateMaxMembersEvent gevent = (GuildUpdateMaxMembersEvent) event;
+            BOT.getTextChannelById(DataMining.GuildLog).sendMessage(new EmbedBuilder()
+                    .setColor(Color.GREEN)
+                    .setTimestamp(Instant.now())
+                    .setThumbnail(gevent.getGuild().getIconUrl())
+                    .setAuthor(gevent.getGuild().getName(), gevent.getGuild().getIconUrl(), gevent.getGuild().getIconUrl())
+                    .setTitle("Max. members updated")
+                    .addField("Guild name", gevent.getGuild().getName(), true)
+                    .addField("Guild ID", gevent.getGuild().getId(), true)
+                    .addField("Guild owner", gevent.getGuild().getOwner().getUser().getAsTag(), true)
+                    .addField("Old max members", String.valueOf(gevent.getOldMaxMembers()), true)
+                    .addField("New max members", String.valueOf(gevent.getNewMaxMembers()), true)
+                    .build()).queue();
+        } else if (event instanceof GuildUpdateMaxPresencesEvent){
+            GuildUpdateMaxPresencesEvent gevent = (GuildUpdateMaxPresencesEvent) event;
+            BOT.getTextChannelById(DataMining.GuildLog).sendMessage(new EmbedBuilder()
+                    .setColor(Color.GREEN)
+                    .setTimestamp(Instant.now())
+                    .setThumbnail(gevent.getGuild().getIconUrl())
+                    .setAuthor(gevent.getGuild().getName(), gevent.getGuild().getIconUrl(), gevent.getGuild().getIconUrl())
+                    .setTitle("Max. presences updated")
+                    .addField("Guild name", gevent.getGuild().getName(), true)
+                    .addField("Guild ID", gevent.getGuild().getId(), true)
+                    .addField("Guild owner", gevent.getGuild().getOwner().getUser().getAsTag(), true)
+                    .addField("Old max presences", String.valueOf(gevent.getOldMaxPresences()), true)
+                    .addField("New max presences", String.valueOf(gevent.getNewMaxPresences()), true)
+                    .build()).queue();
         }
     }
 }
