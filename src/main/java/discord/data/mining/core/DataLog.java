@@ -4,12 +4,19 @@ import discord.data.mining.DataMining;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.events.GenericEvent;
+import net.dv8tion.jda.api.events.channel.category.CategoryCreateEvent;
+import net.dv8tion.jda.api.events.channel.category.CategoryDeleteEvent;
+import net.dv8tion.jda.api.events.channel.category.update.CategoryUpdateNameEvent;
 import net.dv8tion.jda.api.events.channel.store.StoreChannelCreateEvent;
 import net.dv8tion.jda.api.events.channel.store.StoreChannelDeleteEvent;
 import net.dv8tion.jda.api.events.channel.store.update.StoreChannelUpdateNameEvent;
 import net.dv8tion.jda.api.events.channel.text.TextChannelCreateEvent;
 import net.dv8tion.jda.api.events.channel.text.TextChannelDeleteEvent;
 import net.dv8tion.jda.api.events.channel.text.update.TextChannelUpdateNameEvent;
+import net.dv8tion.jda.api.events.channel.text.update.TextChannelUpdateTopicEvent;
+import net.dv8tion.jda.api.events.channel.voice.VoiceChannelCreateEvent;
+import net.dv8tion.jda.api.events.channel.voice.VoiceChannelDeleteEvent;
+import net.dv8tion.jda.api.events.channel.voice.update.VoiceChannelUpdateNameEvent;
 import net.dv8tion.jda.api.events.message.MessageDeleteEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.events.message.react.MessageReactionAddEvent;
@@ -252,6 +259,115 @@ public class DataLog {
                     .addField("Old name", cevent.getOldName(), true)
                     .addField("New name", cevent.getNewName(), true)
                     .addField("Channel ID", cevent.getChannel().getId(), true)
+                    .setFooter("BBN Data Mining", "https://bigbotnetwork.com/images/avatar.png")
+                    .build()).queue();
+        } else if (event instanceof TextChannelUpdateTopicEvent) {
+            TextChannelUpdateTopicEvent cevent = (TextChannelUpdateTopicEvent) event;
+            BOT.getTextChannelById(DataMining.ChannelLog).sendMessage(new EmbedBuilder()
+                    .setColor(Color.YELLOW)
+                    .setTimestamp(Instant.now())
+                    .setThumbnail(cevent.getChannel().getGuild().getIconUrl())
+                    .setAuthor(cevent.getChannel().getGuild().getName(), cevent.getChannel().getGuild().getIconUrl(), cevent.getChannel().getGuild().getIconUrl())
+                    .setTitle("Text channel topic updated")
+                    .addField("Guild Name", cevent.getChannel().getGuild().getName(), true)
+                    .addField("Guild ID", cevent.getChannel().getGuild().getId(), true)
+                    .addField("Guild Owner", cevent.getChannel().getGuild().getOwner().getUser().getAsTag(), true)
+                    .addField("Channel name", cevent.getChannel().getName(), true)
+                    .addField("Old topic", cevent.getOldTopic(), true)
+                    .addField("New topic", cevent.getNewTopic(), true)
+                    .addField("Channel ID", cevent.getChannel().getId(), true)
+                    .setFooter("BBN Data Mining", "https://bigbotnetwork.com/images/avatar.png")
+                    .build()).queue();
+        } else if (event instanceof VoiceChannelCreateEvent) {
+            VoiceChannelCreateEvent cevent = (VoiceChannelCreateEvent) event;
+            BOT.getTextChannelById(DataMining.ChannelLog).sendMessage(new EmbedBuilder()
+                    .setColor(Color.GREEN)
+                    .setTimestamp(Instant.now())
+                    .setThumbnail(cevent.getChannel().getGuild().getIconUrl())
+                    .setAuthor(cevent.getChannel().getGuild().getName(), cevent.getChannel().getGuild().getIconUrl(), cevent.getChannel().getGuild().getIconUrl())
+                    .setTitle("Voice channel created")
+                    .addField("Guild Name", cevent.getChannel().getGuild().getName(), true)
+                    .addField("Guild ID", cevent.getChannel().getGuild().getId(), true)
+                    .addField("Guild Owner", cevent.getChannel().getGuild().getOwner().getUser().getAsTag(), true)
+                    .addField("Channel name", cevent.getChannel().getName(), true)
+                    .addField("Channel ID", cevent.getChannel().getId(), true)
+                    .setFooter("BBN Data Mining", "https://bigbotnetwork.com/images/avatar.png")
+                    .build()).queue();
+        } else if (event instanceof VoiceChannelDeleteEvent) {
+            VoiceChannelDeleteEvent cevent = (VoiceChannelDeleteEvent) event;
+            BOT.getTextChannelById(DataMining.ChannelLog).sendMessage(new EmbedBuilder()
+                    .setColor(Color.RED)
+                    .setTimestamp(Instant.now())
+                    .setThumbnail(cevent.getChannel().getGuild().getIconUrl())
+                    .setAuthor(cevent.getChannel().getGuild().getName(), cevent.getChannel().getGuild().getIconUrl(), cevent.getChannel().getGuild().getIconUrl())
+                    .setTitle("Voice channel deleted")
+                    .addField("Guild Name", cevent.getChannel().getGuild().getName(), true)
+                    .addField("Guild ID", cevent.getChannel().getGuild().getId(), true)
+                    .addField("Guild Owner", cevent.getChannel().getGuild().getOwner().getUser().getAsTag(), true)
+                    .addField("Channel name", cevent.getChannel().getName(), true)
+                    .addField("Channel ID", cevent.getChannel().getId(), true)
+                    .setFooter("BBN Data Mining", "https://bigbotnetwork.com/images/avatar.png")
+                    .build()).queue();
+        } else if (event instanceof VoiceChannelUpdateNameEvent) {
+            VoiceChannelUpdateNameEvent cevent = (VoiceChannelUpdateNameEvent) event;
+            BOT.getTextChannelById(DataMining.ChannelLog).sendMessage(new EmbedBuilder()
+                    .setColor(Color.YELLOW)
+                    .setTimestamp(Instant.now())
+                    .setThumbnail(cevent.getChannel().getGuild().getIconUrl())
+                    .setAuthor(cevent.getChannel().getGuild().getName(), cevent.getChannel().getGuild().getIconUrl(), cevent.getChannel().getGuild().getIconUrl())
+                    .setTitle("Voice channel name updated")
+                    .addField("Guild Name", cevent.getChannel().getGuild().getName(), true)
+                    .addField("Guild ID", cevent.getChannel().getGuild().getId(), true)
+                    .addField("Guild Owner", cevent.getChannel().getGuild().getOwner().getUser().getAsTag(), true)
+                    .addField("Old name", cevent.getOldName(), true)
+                    .addField("New name", cevent.getNewName(), true)
+                    .addField("Channel ID", cevent.getChannel().getId(), true)
+                    .setFooter("BBN Data Mining", "https://bigbotnetwork.com/images/avatar.png")
+                    .build()).queue();
+        } else if (event instanceof CategoryCreateEvent) {
+            CategoryCreateEvent cevent = (CategoryCreateEvent) event;
+            BOT.getTextChannelById(DataMining.ChannelLog).sendMessage(new EmbedBuilder()
+                    .setColor(Color.GREEN)
+                    .setTimestamp(Instant.now())
+                    .setThumbnail(cevent.getGuild().getIconUrl())
+                    .setAuthor(cevent.getGuild().getName(), cevent.getGuild().getIconUrl(), cevent.getGuild().getIconUrl())
+                    .setTitle("Category created")
+                    .addField("Guild Name", cevent.getGuild().getName(), true)
+                    .addField("Guild ID", cevent.getGuild().getId(), true)
+                    .addField("Guild Owner", cevent.getGuild().getOwner().getUser().getAsTag(), true)
+                    .addField("Category name", cevent.getCategory().getName(), true)
+                    .addField("Category ID", cevent.getCategory().getId(), true)
+                    .setFooter("BBN Data Mining", "https://bigbotnetwork.com/images/avatar.png")
+                    .build()).queue();
+        } else if (event instanceof CategoryDeleteEvent) {
+            CategoryDeleteEvent cevent = (CategoryDeleteEvent) event;
+            BOT.getTextChannelById(DataMining.ChannelLog).sendMessage(new EmbedBuilder()
+                    .setColor(Color.RED)
+                    .setTimestamp(Instant.now())
+                    .setThumbnail(cevent.getGuild().getIconUrl())
+                    .setAuthor(cevent.getGuild().getName(), cevent.getGuild().getIconUrl(), cevent.getGuild().getIconUrl())
+                    .setTitle("Category deleted")
+                    .addField("Guild Name", cevent.getGuild().getName(), true)
+                    .addField("Guild ID", cevent.getGuild().getId(), true)
+                    .addField("Guild Owner", cevent.getGuild().getOwner().getUser().getAsTag(), true)
+                    .addField("Category name", cevent.getCategory().getName(), true)
+                    .addField("Category ID", cevent.getCategory().getId(), true)
+                    .setFooter("BBN Data Mining", "https://bigbotnetwork.com/images/avatar.png")
+                    .build()).queue();
+        } else if (event instanceof CategoryUpdateNameEvent) {
+            CategoryUpdateNameEvent cevent = (CategoryUpdateNameEvent) event;
+            BOT.getTextChannelById(DataMining.ChannelLog).sendMessage(new EmbedBuilder()
+                    .setColor(Color.RED)
+                    .setTimestamp(Instant.now())
+                    .setThumbnail(cevent.getGuild().getIconUrl())
+                    .setAuthor(cevent.getGuild().getName(), cevent.getGuild().getIconUrl(), cevent.getGuild().getIconUrl())
+                    .setTitle("Category name updated")
+                    .addField("Guild Name", cevent.getGuild().getName(), true)
+                    .addField("Guild ID", cevent.getGuild().getId(), true)
+                    .addField("Guild Owner", cevent.getGuild().getOwner().getUser().getAsTag(), true)
+                    .addField("Old name", cevent.getOldName(), true)
+                    .addField("New name", cevent.getNewName(), true)
+                    .addField("Category ID", cevent.getCategory().getId(), true)
                     .setFooter("BBN Data Mining", "https://bigbotnetwork.com/images/avatar.png")
                     .build()).queue();
         }
