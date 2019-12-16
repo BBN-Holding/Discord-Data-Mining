@@ -20,6 +20,8 @@ public class DataMining {
     public static String ConsoleLog = "462556910206320640";
     public static String ChannelLog = "655494752506216475";
     public static String GuildLog = "655714414976040961";
+    public static String MemberLog = "656026530190983188";
+    public static String ActivityLog = "656028905802694666";
     public static ArrayList<JDA> clients = new ArrayList<>();
     public static ArrayList<JDA> bots = new ArrayList<>();
     private static ArrayList<JDA> manager = new ArrayList<>();

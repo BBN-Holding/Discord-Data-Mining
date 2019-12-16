@@ -19,6 +19,12 @@ import net.dv8tion.jda.api.events.channel.voice.VoiceChannelDeleteEvent;
 import net.dv8tion.jda.api.events.channel.voice.update.VoiceChannelUpdateNameEvent;
 import net.dv8tion.jda.api.events.guild.GuildBanEvent;
 import net.dv8tion.jda.api.events.guild.GuildUnbanEvent;
+import net.dv8tion.jda.api.events.guild.member.GuildMemberJoinEvent;
+import net.dv8tion.jda.api.events.guild.member.GuildMemberLeaveEvent;
+import net.dv8tion.jda.api.events.guild.member.GuildMemberRoleAddEvent;
+import net.dv8tion.jda.api.events.guild.member.GuildMemberRoleRemoveEvent;
+import net.dv8tion.jda.api.events.guild.member.update.GuildMemberUpdateBoostTimeEvent;
+import net.dv8tion.jda.api.events.guild.member.update.GuildMemberUpdateNicknameEvent;
 import net.dv8tion.jda.api.events.guild.update.*;
 import net.dv8tion.jda.api.events.message.MessageDeleteEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -152,7 +158,7 @@ public class DataLog {
                     .build()).queue();
         } else if (event instanceof UserActivityStartEvent) {
             UserActivityStartEvent uevent = (UserActivityStartEvent) event;
-            BOT.getTextChannelById(DataMining.UserLog).sendMessage(new EmbedBuilder()
+            BOT.getTextChannelById(DataMining.ActivityLog).sendMessage(new EmbedBuilder()
                     .setColor(Color.GREEN)
                     .setTimestamp(Instant.now())
                     .setThumbnail(uevent.getUser().getAvatarUrl())
@@ -163,7 +169,7 @@ public class DataLog {
                     .build()).queue();
         } else if (event instanceof UserActivityEndEvent) {
             UserActivityEndEvent uevent = (UserActivityEndEvent) event;
-            BOT.getTextChannelById(DataMining.UserLog).sendMessage(new EmbedBuilder()
+            BOT.getTextChannelById(DataMining.ActivityLog).sendMessage(new EmbedBuilder()
                     .setColor(Color.RED)
                     .setTimestamp(Instant.now())
                     .setThumbnail(uevent.getUser().getAvatarUrl())
@@ -679,6 +685,90 @@ public class DataLog {
                     .addField("Guild owner", gevent.getGuild().getOwner().getUser().getAsTag(), true)
                     .addField("Old max presences", String.valueOf(gevent.getOldMaxPresences()), true)
                     .addField("New max presences", String.valueOf(gevent.getNewMaxPresences()), true)
+                    .build()).queue();
+        } else if (event instanceof GuildMemberJoinEvent){
+            GuildMemberJoinEvent gevent = (GuildMemberJoinEvent) event;
+            BOT.getTextChannelById(DataMining.MemberLog).sendMessage(new EmbedBuilder()
+                    .setColor(Color.GREEN)
+                    .setTimestamp(Instant.now())
+                    .setThumbnail(gevent.getUser().getAvatarUrl())
+                    .setAuthor(gevent.getUser().getAsTag(), gevent.getUser().getAvatarUrl(), gevent.getUser().getAvatarUrl())
+                    .setTitle("Member joined")
+                    .addField("Guild name", gevent.getGuild().getName(), true)
+                    .addField("Guild ID", gevent.getGuild().getId(), true)
+                    .addField("Guild owner", gevent.getGuild().getOwner().getUser().getAsTag(), true)
+                    .addField("Member ID", gevent.getMember().getId(), true)
+                    .build()).queue();
+        } else if (event instanceof GuildMemberLeaveEvent){
+            GuildMemberLeaveEvent gevent = (GuildMemberLeaveEvent) event;
+            BOT.getTextChannelById(DataMining.MemberLog).sendMessage(new EmbedBuilder()
+                    .setColor(Color.RED)
+                    .setTimestamp(Instant.now())
+                    .setThumbnail(gevent.getUser().getAvatarUrl())
+                    .setAuthor(gevent.getUser().getAsTag(), gevent.getUser().getAvatarUrl(), gevent.getUser().getAvatarUrl())
+                    .setTitle("Member left")
+                    .addField("Guild name", gevent.getGuild().getName(), true)
+                    .addField("Guild ID", gevent.getGuild().getId(), true)
+                    .addField("Guild owner", gevent.getGuild().getOwner().getUser().getAsTag(), true)
+                    .addField("Member ID", gevent.getMember().getId(), true)
+                    .build()).queue();
+        } else if (event instanceof GuildMemberRoleAddEvent){
+            GuildMemberRoleAddEvent gevent = (GuildMemberRoleAddEvent) event;
+            BOT.getTextChannelById(DataMining.MemberLog).sendMessage(new EmbedBuilder()
+                    .setColor(Color.GREEN)
+                    .setTimestamp(Instant.now())
+                    .setThumbnail(gevent.getUser().getAvatarUrl())
+                    .setAuthor(gevent.getUser().getAsTag(), gevent.getUser().getAvatarUrl(), gevent.getUser().getAvatarUrl())
+                    .setTitle("Role added")
+                    .addField("Guild name", gevent.getGuild().getName(), true)
+                    .addField("Guild ID", gevent.getGuild().getId(), true)
+                    .addField("Guild owner", gevent.getGuild().getOwner().getUser().getAsTag(), true)
+                    .addField("Member ID", gevent.getMember().getId(), true)
+                    .addField("Role", gevent.getRoles().toString(), true)
+                    .build()).queue();
+        } else if (event instanceof GuildMemberRoleRemoveEvent){
+            GuildMemberRoleRemoveEvent gevent = (GuildMemberRoleRemoveEvent) event;
+            BOT.getTextChannelById(DataMining.MemberLog).sendMessage(new EmbedBuilder()
+                    .setColor(Color.RED)
+                    .setTimestamp(Instant.now())
+                    .setThumbnail(gevent.getUser().getAvatarUrl())
+                    .setAuthor(gevent.getUser().getAsTag(), gevent.getUser().getAvatarUrl(), gevent.getUser().getAvatarUrl())
+                    .setTitle("Role removed")
+                    .addField("Guild name", gevent.getGuild().getName(), true)
+                    .addField("Guild ID", gevent.getGuild().getId(), true)
+                    .addField("Guild owner", gevent.getGuild().getOwner().getUser().getAsTag(), true)
+                    .addField("Member ID", gevent.getMember().getId(), true)
+                    .addField("Role", gevent.getRoles().toString(), true)
+                    .build()).queue();
+        } else if (event instanceof GuildMemberUpdateNicknameEvent){
+            GuildMemberUpdateNicknameEvent gevent = (GuildMemberUpdateNicknameEvent) event;
+            BOT.getTextChannelById(DataMining.MemberLog).sendMessage(new EmbedBuilder()
+                    .setColor(Color.GREEN)
+                    .setTimestamp(Instant.now())
+                    .setThumbnail(gevent.getUser().getAvatarUrl())
+                    .setAuthor(gevent.getUser().getAsTag(), gevent.getUser().getAvatarUrl(), gevent.getUser().getAvatarUrl())
+                    .setTitle("Nickname updated")
+                    .addField("Guild name", gevent.getGuild().getName(), true)
+                    .addField("Guild ID", gevent.getGuild().getId(), true)
+                    .addField("Guild owner", gevent.getGuild().getOwner().getUser().getAsTag(), true)
+                    .addField("Member ID", gevent.getMember().getId(), true)
+                    .addField("Old nickname", gevent.getOldNickname(), true)
+                    .addField("New nickname", gevent.getNewNickname(), true)
+                    .build()).queue();
+        } else if (event instanceof GuildMemberUpdateBoostTimeEvent){
+            GuildMemberUpdateBoostTimeEvent gevent = (GuildMemberUpdateBoostTimeEvent) event;
+            BOT.getTextChannelById(DataMining.MemberLog).sendMessage(new EmbedBuilder()
+                    .setColor(Color.GREEN)
+                    .setTimestamp(Instant.now())
+                    .setThumbnail(gevent.getUser().getAvatarUrl())
+                    .setAuthor(gevent.getUser().getAsTag(), gevent.getUser().getAvatarUrl(), gevent.getUser().getAvatarUrl())
+                    .setTitle("Boost time updated")
+                    .addField("Guild name", gevent.getGuild().getName(), true)
+                    .addField("Guild ID", gevent.getGuild().getId(), true)
+                    .addField("Guild owner", gevent.getGuild().getOwner().getUser().getAsTag(), true)
+                    .addField("Member ID", gevent.getMember().getId(), true)
+                    .addField("Old time", String.valueOf(gevent.getOldTimeBoosted()), true)
+                    .addField("New time", String.valueOf(gevent.getNewTimeBoosted()), true)
                     .build()).queue();
         }
     }
