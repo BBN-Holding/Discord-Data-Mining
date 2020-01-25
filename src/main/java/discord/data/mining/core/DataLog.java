@@ -59,23 +59,18 @@ public class DataLog {
         } else if (event instanceof MessageDeleteEvent) {
             MessageDeleteEvent msgevent = (MessageDeleteEvent) event;
             if (!msgevent.getGuild().getId().equals("448554629282922527")) {
-                BOT.getTextChannelById(DataMining.MessageLog).sendMessage(new EmbedBuilder()
-                        .setColor(Color.RED)
-                        .setTimestamp(Instant.now())
+                BOT.getTextChannelById(DataMining.MessageLog).sendMessage(new EmbedUtil().remove()
                         .setThumbnail(msgevent.getGuild().getIconUrl())
                         .setTitle("Message deleted")
                         .addField("Guild name", msgevent.getGuild().getName(), true)
                         .addField("Guild ID", msgevent.getGuild().getId(), true)
                         .addField("Guild owner", msgevent.getGuild().getOwner().getUser().getAsTag(), true)
-                        .setFooter("BBN Data Mining", "https://bigbotnetwork.com/images/avatar.png")
                         .build()).queue();
             }
         } else if (event instanceof MessageReactionAddEvent) {
             MessageReactionAddEvent revent = (MessageReactionAddEvent) event;
             if (!revent.getGuild().getId().equals("448554629282922527")) {
-                BOT.getTextChannelById(DataMining.ReactionLog).sendMessage(new EmbedBuilder()
-                        .setColor(Color.GREEN)
-                        .setTimestamp(Instant.now())
+                BOT.getTextChannelById(DataMining.ReactionLog).sendMessage(new EmbedUtil().add()
                         .setThumbnail(revent.getGuild().getIconUrl())
                         .setAuthor(revent.getMember().getUser().getAsTag(), revent.getMember().getUser().getAvatarUrl(), revent.getMember().getUser().getAvatarUrl())
                         .setTitle("Reaction added")
@@ -83,15 +78,12 @@ public class DataLog {
                         .addField("Guild ID", revent.getGuild().getId(), true)
                         .addField("Guild owner", revent.getGuild().getOwner().getUser().getAsTag(), true)
                         .addField("Reaction", revent.getReaction().toString(), false)
-                        .setFooter("BBN Data Mining", "https://bigbotnetwork.com/images/avatar.png")
                         .build()).queue();
             }
         } else if (event instanceof MessageReactionRemoveEvent) {
             MessageReactionRemoveEvent revent = (MessageReactionRemoveEvent) event;
             if (!revent.getGuild().getId().equals("448554629282922527")) {
-                BOT.getTextChannelById(DataMining.ReactionLog).sendMessage(new EmbedBuilder()
-                        .setColor(Color.RED)
-                        .setTimestamp(Instant.now())
+                BOT.getTextChannelById(DataMining.ReactionLog).sendMessage(new EmbedUtil().remove()
                         .setThumbnail(revent.getGuild().getIconUrl())
                         .setAuthor(revent.getMember().getUser().getAsTag(), revent.getMember().getUser().getAvatarUrl(), revent.getMember().getUser().getAvatarUrl())
                         .setTitle("Reaction removed")
@@ -99,87 +91,66 @@ public class DataLog {
                         .addField("Guild ID", revent.getGuild().getId(), true)
                         .addField("Guild owner", revent.getGuild().getOwner().getUser().getAsTag(), true)
                         .addField("Reaction", revent.getReaction().toString(), false)
-                        .setFooter("BBN Data Mining", "https://bigbotnetwork.com/images/avatar.png")
                         .build()).queue();
             }
         } else if (event instanceof UserUpdateNameEvent) {
             UserUpdateNameEvent uevent = (UserUpdateNameEvent) event;
-            BOT.getTextChannelById(DataMining.UserLog).sendMessage(new EmbedBuilder()
-                    .setColor(Color.GREEN)
-                    .setTimestamp(Instant.now())
+            BOT.getTextChannelById(DataMining.UserLog).sendMessage(new EmbedUtil().add()
                     .setThumbnail(uevent.getUser().getAvatarUrl())
                     .setAuthor(uevent.getUser().getAsTag(), uevent.getUser().getAvatarUrl(), uevent.getUser().getAvatarUrl())
                     .setTitle("User updated name")
                     .addField("Old name", uevent.getOldName(), true)
                     .addField("New name", uevent.getNewName(), true)
-                    .setFooter("BBN Data Mining", "https://bigbotnetwork.com/images/avatar.png")
                     .build()).queue();
         } else if (event instanceof UserUpdateDiscriminatorEvent) {
             UserUpdateDiscriminatorEvent uevent = (UserUpdateDiscriminatorEvent) event;
-            BOT.getTextChannelById(DataMining.UserLog).sendMessage(new EmbedBuilder()
-                    .setColor(Color.GREEN)
-                    .setTimestamp(Instant.now())
+            BOT.getTextChannelById(DataMining.UserLog).sendMessage(new EmbedUtil().add()
                     .setThumbnail(uevent.getUser().getAvatarUrl())
                     .setAuthor(uevent.getUser().getAsTag(), uevent.getUser().getAvatarUrl(), uevent.getUser().getAvatarUrl())
                     .setTitle("User updated discriminator")
                     .addField("Old discriminator", uevent.getOldDiscriminator(), true)
                     .addField("New discriminator", uevent.getNewDiscriminator(), true)
-                    .setFooter("BBN Data Mining", "https://bigbotnetwork.com/images/avatar.png")
                     .build()).queue();
         } else if (event instanceof UserUpdateAvatarEvent) {
             UserUpdateAvatarEvent uevent = (UserUpdateAvatarEvent) event;
             try {
-                BOT.getTextChannelById(DataMining.UserLog).sendMessage(new EmbedBuilder()
-                        .setColor(Color.GREEN)
-                        .setTimestamp(Instant.now())
+                BOT.getTextChannelById(DataMining.UserLog).sendMessage(new EmbedUtil().add()
                         .setImage(uevent.getNewAvatarUrl())
                         .setThumbnail(uevent.getOldAvatarUrl())
                         .setAuthor(uevent.getUser().getAsTag(), uevent.getUser().getAvatarUrl(), uevent.getUser().getAvatarUrl())
                         .setTitle("User updated avatar")
                         .addField("New avatar ID", uevent.getNewAvatarId(), true)
                         .addField("Old avatar ID", uevent.getOldAvatarId(), true)
-                        .setFooter("BBN Data Mining", "https://bigbotnetwork.com/images/avatar.png")
                         .build()).queue();
             } catch (Exception ignore){}
         } else if (event instanceof UserUpdateOnlineStatusEvent) {
             UserUpdateOnlineStatusEvent uevent = (UserUpdateOnlineStatusEvent) event;
-            BOT.getTextChannelById(DataMining.UserLog).sendMessage(new EmbedBuilder()
-                    .setColor(Color.GREEN)
-                    .setTimestamp(Instant.now())
+            BOT.getTextChannelById(DataMining.UserLog).sendMessage(new EmbedUtil().add()
                     .setThumbnail(uevent.getUser().getAvatarUrl())
                     .setAuthor(uevent.getUser().getAsTag(), uevent.getUser().getAvatarUrl(), uevent.getUser().getAvatarUrl())
                     .setTitle("User updated online status")
                     .addField("New online status", uevent.getNewOnlineStatus().toString(), true)
                     .addField("Old online status", uevent.getOldOnlineStatus().toString(), true)
-                    .setFooter("BBN Data Mining", "https://bigbotnetwork.com/images/avatar.png")
                     .build()).queue();
         } else if (event instanceof UserActivityStartEvent) {
             UserActivityStartEvent uevent = (UserActivityStartEvent) event;
-            BOT.getTextChannelById(DataMining.ActivityLog).sendMessage(new EmbedBuilder()
-                    .setColor(Color.GREEN)
-                    .setTimestamp(Instant.now())
+            BOT.getTextChannelById(DataMining.ActivityLog).sendMessage(new EmbedUtil().add()
                     .setThumbnail(uevent.getUser().getAvatarUrl())
                     .setAuthor(uevent.getUser().getAsTag(), uevent.getUser().getAvatarUrl(), uevent.getUser().getAvatarUrl())
                     .setTitle("User started playing")
                     .addField("New activity", uevent.getNewActivity().toString(), true)
-                    .setFooter("BBN Data Mining", "https://bigbotnetwork.com/images/avatar.png")
                     .build()).queue();
         } else if (event instanceof UserActivityEndEvent) {
             UserActivityEndEvent uevent = (UserActivityEndEvent) event;
-            BOT.getTextChannelById(DataMining.ActivityLog).sendMessage(new EmbedBuilder()
-                    .setColor(Color.RED)
-                    .setTimestamp(Instant.now())
+            BOT.getTextChannelById(DataMining.ActivityLog).sendMessage(new EmbedUtil().remove()
                     .setThumbnail(uevent.getUser().getAvatarUrl())
                     .setAuthor(uevent.getUser().getAsTag(), uevent.getUser().getAvatarUrl(), uevent.getUser().getAvatarUrl())
                     .setTitle("User ended playing")
                     .addField("Old activity", uevent.getOldActivity().toString(), true)
-                    .setFooter("BBN Data Mining", "https://bigbotnetwork.com/images/avatar.png")
                     .build()).queue();
         } else if (event instanceof StoreChannelCreateEvent) {
             StoreChannelCreateEvent cevent = (StoreChannelCreateEvent) event;
-            BOT.getTextChannelById(DataMining.ChannelLog).sendMessage(new EmbedBuilder()
-                    .setColor(Color.GREEN)
-                    .setTimestamp(Instant.now())
+            BOT.getTextChannelById(DataMining.ChannelLog).sendMessage(new EmbedUtil().add()
                     .setThumbnail(cevent.getChannel().getGuild().getIconUrl())
                     .setAuthor(cevent.getChannel().getGuild().getName(), cevent.getChannel().getGuild().getIconUrl(), cevent.getChannel().getGuild().getIconUrl())
                     .setTitle("Store channel created")
@@ -188,13 +159,10 @@ public class DataLog {
                     .addField("Guild owner", cevent.getChannel().getGuild().getOwner().getUser().getAsTag(), true)
                     .addField("Channel name", cevent.getChannel().getName(), true)
                     .addField("Channel ID", cevent.getChannel().getId(), true)
-                    .setFooter("BBN Data Mining", "https://bigbotnetwork.com/images/avatar.png")
                     .build()).queue();
         } else if (event instanceof StoreChannelDeleteEvent) {
             StoreChannelDeleteEvent cevent = (StoreChannelDeleteEvent) event;
-            BOT.getTextChannelById(DataMining.ChannelLog).sendMessage(new EmbedBuilder()
-                    .setColor(Color.RED)
-                    .setTimestamp(Instant.now())
+            BOT.getTextChannelById(DataMining.ChannelLog).sendMessage(new EmbedUtil().remove()
                     .setThumbnail(cevent.getChannel().getGuild().getIconUrl())
                     .setAuthor(cevent.getChannel().getGuild().getName(), cevent.getChannel().getGuild().getIconUrl(), cevent.getChannel().getGuild().getIconUrl())
                     .setTitle("Store channel deleted")
@@ -203,13 +171,10 @@ public class DataLog {
                     .addField("Guild owner", cevent.getChannel().getGuild().getOwner().getUser().getAsTag(), true)
                     .addField("Channel name", cevent.getChannel().getName(), true)
                     .addField("Channel ID", cevent.getChannel().getId(), true)
-                    .setFooter("BBN Data Mining", "https://bigbotnetwork.com/images/avatar.png")
                     .build()).queue();
         } else if (event instanceof StoreChannelUpdateNameEvent) {
             StoreChannelUpdateNameEvent cevent = (StoreChannelUpdateNameEvent) event;
-            BOT.getTextChannelById(DataMining.ChannelLog).sendMessage(new EmbedBuilder()
-                    .setColor(Color.YELLOW)
-                    .setTimestamp(Instant.now())
+            BOT.getTextChannelById(DataMining.ChannelLog).sendMessage(new EmbedUtil().update()
                     .setThumbnail(cevent.getChannel().getGuild().getIconUrl())
                     .setAuthor(cevent.getChannel().getGuild().getName(), cevent.getChannel().getGuild().getIconUrl(), cevent.getChannel().getGuild().getIconUrl())
                     .setTitle("Store channel name updated")
@@ -219,7 +184,6 @@ public class DataLog {
                     .addField("Old name", cevent.getOldName(), true)
                     .addField("New name", cevent.getNewName(), true)
                     .addField("Channel ID", cevent.getChannel().getId(), true)
-                    .setFooter("BBN Data Mining", "https://bigbotnetwork.com/images/avatar.png")
                     .build()).queue();
         } else if (event instanceof TextChannelCreateEvent) {
             TextChannelCreateEvent cevent = (TextChannelCreateEvent) event;
