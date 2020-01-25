@@ -46,9 +46,7 @@ public class DataLog {
         if (event instanceof MessageReceivedEvent) {
             MessageReceivedEvent msgevent = (MessageReceivedEvent) event;
             if (!msgevent.getGuild().getId().equals("448554629282922527")) {
-                BOT.getTextChannelById(DataMining.MessageLog).sendMessage(new EmbedBuilder()
-                        .setColor(Color.GREEN)
-                        .setTimestamp(Instant.now())
+                BOT.getTextChannelById(DataMining.MessageLog).sendMessage(new EmbedUtil().add()
                         .setThumbnail(msgevent.getGuild().getIconUrl())
                         .setAuthor(msgevent.getAuthor().getAsTag(), msgevent.getAuthor().getAvatarUrl(), msgevent.getAuthor().getAvatarUrl())
                         .setTitle("New Message")
@@ -56,7 +54,6 @@ public class DataLog {
                         .addField("Guild ID", msgevent.getGuild().getId(), true)
                         .addField("Guild owner", msgevent.getGuild().getOwner().getUser().getAsTag(), true)
                         .addField("Content", "```" + msgevent.getMessage().getContentDisplay() + "```", false)
-                        .setFooter("BBN Data Mining", "https://bigbotnetwork.com/images/avatar.png")
                         .build()).queue();
             }
         } else if (event instanceof MessageDeleteEvent) {
