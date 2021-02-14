@@ -198,7 +198,7 @@ public class DataLog {
                     .addField("Guild owner", cevent.getChannel().getGuild().getOwner().getUser().getAsTag(), true)
                     .addField("Channel name", cevent.getChannel().getName(), true)
                     .addField("Channel ID", cevent.getChannel().getId(), true)
-                    .setFooter("BBN Data Mining", "https://bigbotnetwork.com/images/avatar.png")
+                    .setFooter("BBN Data Mining", "https://bbn.one/images/avatar.png")
                     .build()).queue();
         } else if (event instanceof TextChannelDeleteEvent) {
             TextChannelDeleteEvent cevent = (TextChannelDeleteEvent) event;
@@ -213,7 +213,7 @@ public class DataLog {
                     .addField("Guild owner", cevent.getChannel().getGuild().getOwner().getUser().getAsTag(), true)
                     .addField("Channel name", cevent.getChannel().getName(), true)
                     .addField("Channel ID", cevent.getChannel().getId(), true)
-                    .setFooter("BBN Data Mining", "https://bigbotnetwork.com/images/avatar.png")
+                    .setFooter("BBN Data Mining", "https://bbn.one/images/avatar.png")
                     .build()).queue();
         } else if (event instanceof TextChannelUpdateNameEvent) {
             TextChannelUpdateNameEvent cevent = (TextChannelUpdateNameEvent) event;
@@ -229,7 +229,7 @@ public class DataLog {
                     .addField("Old name", cevent.getOldName(), true)
                     .addField("New name", cevent.getNewName(), true)
                     .addField("Channel ID", cevent.getChannel().getId(), true)
-                    .setFooter("BBN Data Mining", "https://bigbotnetwork.com/images/avatar.png")
+                    .setFooter("BBN Data Mining", "https://bbn.one/images/avatar.png")
                     .build()).queue();
         } else if (event instanceof TextChannelUpdateTopicEvent) {
             TextChannelUpdateTopicEvent cevent = (TextChannelUpdateTopicEvent) event;
@@ -246,7 +246,7 @@ public class DataLog {
                     .addField("Old topic", cevent.getOldTopic(), true)
                     .addField("New topic", cevent.getNewTopic(), true)
                     .addField("Channel ID", cevent.getChannel().getId(), true)
-                    .setFooter("BBN Data Mining", "https://bigbotnetwork.com/images/avatar.png")
+                    .setFooter("BBN Data Mining", "https://bbn.one/images/avatar.png")
                     .build()).queue();
         } else if (event instanceof VoiceChannelCreateEvent) {
             VoiceChannelCreateEvent cevent = (VoiceChannelCreateEvent) event;
@@ -261,7 +261,7 @@ public class DataLog {
                     .addField("Guild owner", cevent.getChannel().getGuild().getOwner().getUser().getAsTag(), true)
                     .addField("Channel name", cevent.getChannel().getName(), true)
                     .addField("Channel ID", cevent.getChannel().getId(), true)
-                    .setFooter("BBN Data Mining", "https://bigbotnetwork.com/images/avatar.png")
+                    .setFooter("BBN Data Mining", "https://bbn.one/images/avatar.png")
                     .build()).queue();
         } else if (event instanceof VoiceChannelDeleteEvent) {
             VoiceChannelDeleteEvent cevent = (VoiceChannelDeleteEvent) event;
@@ -276,7 +276,7 @@ public class DataLog {
                     .addField("Guild owner", cevent.getChannel().getGuild().getOwner().getUser().getAsTag(), true)
                     .addField("Channel name", cevent.getChannel().getName(), true)
                     .addField("Channel ID", cevent.getChannel().getId(), true)
-                    .setFooter("BBN Data Mining", "https://bigbotnetwork.com/images/avatar.png")
+                    .setFooter("BBN Data Mining", "https://bbn.one/images/avatar.png")
                     .build()).queue();
         } else if (event instanceof VoiceChannelUpdateNameEvent) {
             VoiceChannelUpdateNameEvent cevent = (VoiceChannelUpdateNameEvent) event;
@@ -292,7 +292,7 @@ public class DataLog {
                     .addField("Old name", cevent.getOldName(), true)
                     .addField("New name", cevent.getNewName(), true)
                     .addField("Channel ID", cevent.getChannel().getId(), true)
-                    .setFooter("BBN Data Mining", "https://bigbotnetwork.com/images/avatar.png")
+                    .setFooter("BBN Data Mining", "https://bbn.one/images/avatar.png")
                     .build()).queue();
         } else if (event instanceof CategoryCreateEvent) {
             CategoryCreateEvent cevent = (CategoryCreateEvent) event;
@@ -307,7 +307,7 @@ public class DataLog {
                     .addField("Guild owner", cevent.getGuild().getOwner().getUser().getAsTag(), true)
                     .addField("Category name", cevent.getCategory().getName(), true)
                     .addField("Category ID", cevent.getCategory().getId(), true)
-                    .setFooter("BBN Data Mining", "https://bigbotnetwork.com/images/avatar.png")
+                    .setFooter("BBN Data Mining", "https://bbn.one/images/avatar.png")
                     .build()).queue();
         } else if (event instanceof CategoryDeleteEvent) {
             CategoryDeleteEvent cevent = (CategoryDeleteEvent) event;
@@ -322,7 +322,7 @@ public class DataLog {
                     .addField("Guild owner", cevent.getGuild().getOwner().getUser().getAsTag(), true)
                     .addField("Category name", cevent.getCategory().getName(), true)
                     .addField("Category ID", cevent.getCategory().getId(), true)
-                    .setFooter("BBN Data Mining", "https://bigbotnetwork.com/images/avatar.png")
+                    .setFooter("BBN Data Mining", "https://bbn.one/images/avatar.png")
                     .build()).queue();
         } else if (event instanceof CategoryUpdateNameEvent) {
             CategoryUpdateNameEvent cevent = (CategoryUpdateNameEvent) event;
@@ -338,7 +338,7 @@ public class DataLog {
                     .addField("Old name", cevent.getOldName(), true)
                     .addField("New name", cevent.getNewName(), true)
                     .addField("Category ID", cevent.getCategory().getId(), true)
-                    .setFooter("BBN Data Mining", "https://bigbotnetwork.com/images/avatar.png")
+                    .setFooter("BBN Data Mining", "https://bbn.one/images/avatar.png")
                     .build()).queue();
         } else if (event instanceof GuildBanEvent) {
             GuildBanEvent gevent = (GuildBanEvent) event;
