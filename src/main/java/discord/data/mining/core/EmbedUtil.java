@@ -10,18 +10,18 @@ public class EmbedUtil {
         return new EmbedBuilder()
                 .setColor(Color.GREEN)
                 .setTimestamp(Instant.now())
-                .setFooter("BBN Data Mining", "https://bigbotnetwork.com/images/avatar.png");
+                .setFooter("BBN Data Mining", "https://bbn.one/images/avatar.png");
     }
     public EmbedBuilder remove () {
         return new EmbedBuilder()
                 .setColor(Color.RED)
                 .setTimestamp(Instant.now())
-                .setFooter("BBN Data Mining", "https://bigbotnetwork.com/images/avatar.png");
+                .setFooter("BBN Data Mining", "https://bbn.one/images/avatar.png");
     }
     public EmbedBuilder update () {
         return new EmbedBuilder()
                 .setColor(Color.GREEN)
                 .setTimestamp(Instant.now())
-                .setFooter("BBN Data Mining", "https://bigbotnetwork.com/images/avatar.png");
+                .setFooter("BBN Data Mining", "https://bbn.one/images/avatar.png");
     }
 }
